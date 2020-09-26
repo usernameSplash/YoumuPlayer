@@ -12,6 +12,8 @@ All rights of Image Resources Are Property of **ZUN**, and **Tasogare Frontier**
 
 ### Youmu Animation
 
+#### Basic
+
 -   [x] Idle
 -   [x] Sit & Stand
 -   [x] Walk
@@ -19,9 +21,13 @@ All rights of Image Resources Are Property of **ZUN**, and **Tasogare Frontier**
     -   [x] Slash
     -   [x] Pierce(combo attack)
 -   [x] Jump
--   [ ] Attack in Jumping
+
+#### Advanced
+
+-   [ ] Jumping Attack
+-   [ ] Sitting Attack
 -   [ ] Dash
--   [ ] Attack with Dash
+-   [ ] Dash Attack
 
 ## Directory
 
