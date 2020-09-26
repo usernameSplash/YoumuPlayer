@@ -15,6 +15,7 @@ public class TestScript : MonoBehaviour
     float _jumpPower = 0.0f;
 
     public bool _isFocusing = false; // 정신집중
+    public bool _isJumping = false;
 
     enum MoveDir
     {
@@ -154,7 +155,8 @@ public class TestScript : MonoBehaviour
 
     void Jump()
     {
-        _rigid.AddForce(Vector3.up * _jumpPower, ForceMode2D.Impulse);
+        if (!_isJumping)
+            _rigid.AddForce(Vector3.up * _jumpPower, ForceMode2D.Impulse);
     }
 
     void IsOnAir()
@@ -171,12 +173,16 @@ public class TestScript : MonoBehaviour
             if (rayHit.distance < 1.2f)
             {
                 _ani.SetBool("isJump", false);
+                _isJumping = false;
             }
         }
         else
         {
             if (Mathf.Abs(_rigid.velocity.y) > 0.1f)
+            {
                 _ani.SetBool("isJump", true);
+                _isJumping = true;
+            }
         }
     }
 
