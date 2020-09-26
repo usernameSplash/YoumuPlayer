@@ -8,4 +8,4 @@ All rights of Image Resources Are Property of **ZUN**, and **Tasogare Frontier**
 
 ## Directory
 
-(파일 경로 하이퍼링크 추가 예정)
+(파일 경로 하이퍼링크 및 간단 설명 추가 예정)
