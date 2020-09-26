@@ -43,7 +43,15 @@ public class TestScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.J))
+        {
+            ani.Play("Youmu_Pierce");
+        }
+        else if (Input.GetKey(KeyCode.K))
+        {
+            ani.Play("Youmu_Slash");
+        }
+        else if (Input.GetKey(KeyCode.S))
         {
             ani.Play("Youmu_Sit");
         }
@@ -62,7 +70,6 @@ public class TestScript : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.S))
         {
             ani.Play("Youmu_Stand");
-
         }
         else
         {
@@ -75,7 +82,7 @@ public class TestScript : MonoBehaviour
             }
             else
             {
-                ani.Play("Youmu_Idle");
+                ani.Play("Youmu_Slash");
             }
         }
 
