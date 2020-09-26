@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class TestScript : MonoBehaviour
 {
-    Animator ani;
+    Animator _ani;
     SpriteRenderer _sprite;
-    float speed = 3.0f;
+    float _speed = 3.0f;
+    bool _isGround = true;
 
     enum MoveDir
     {
@@ -36,56 +37,58 @@ public class TestScript : MonoBehaviour
 
     void Start()
     {
-        ani = gameObject.GetComponent<Animator>();
+        _ani = gameObject.GetComponent<Animator>();
         _sprite = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.J))
+        if (Input.GetKey(KeyCode.S))
         {
-            ani.Play("Youmu_Pierce");
-        }
-        else if (Input.GetKey(KeyCode.K))
-        {
-            ani.Play("Youmu_Slash");
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            ani.Play("Youmu_Sit");
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            ani.Play("Youmu_Walk");
-            Dir = MoveDir.Right;
-            transform.position += Vector3.right * speed * Time.deltaTime;
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            ani.Play("Youmu_Walk");
-            Dir = MoveDir.Left;
-            transform.position += Vector3.left * speed * Time.deltaTime;
-        }
-        else if (Input.GetKeyUp(KeyCode.S))
-        {
-            ani.Play("Youmu_Stand");
+            _ani.SetBool("isSit", true);
         }
         else
         {
-            if (ani.GetCurrentAnimatorStateInfo(0).IsName("Youmu_Stand"))
+            _ani.SetBool("isSit", false);
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            _ani.SetBool("isWalk", true);
+            Dir = MoveDir.Right;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            _ani.SetBool("isWalk", true);
+            Dir = MoveDir.Left;
+        }
+        else
+        {
+            _ani.SetBool("isWalk", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            if (_ani.GetCurrentAnimatorStateInfo(0).IsName("Youmu_Slash"))
             {
-                if (ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
-                {
-                    ani.Play("Youmu_Idle");
-                }
+                Debug.Log("A");
+                _ani.SetTrigger("Pierce");
             }
             else
             {
-                ani.Play("Youmu_Slash");
+                _ani.SetBool("isSlash", true);
             }
         }
+        else
+        {
+            _ani.SetBool("isSlash", false);
+        }
 
+    }
+    void LateUpdate()
+    {
+        //카메라
     }
 
 }
