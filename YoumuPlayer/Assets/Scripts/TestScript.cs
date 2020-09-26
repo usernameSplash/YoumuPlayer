@@ -7,7 +7,7 @@ public class TestScript : MonoBehaviour
     Animator _ani;
     SpriteRenderer _sprite;
     float _speed = 3.0f;
-    bool _isGround = true;
+    // bool _isGround = true;
 
     enum MoveDir
     {
@@ -38,6 +38,7 @@ public class TestScript : MonoBehaviour
     void Start()
     {
         _ani = gameObject.GetComponent<Animator>();
+        _ani.speed = 1.2f;
         _sprite = gameObject.GetComponent<SpriteRenderer>();
     }
 
@@ -61,6 +62,7 @@ public class TestScript : MonoBehaviour
         else if (Input.GetKey(KeyCode.A))
         {
             _ani.SetBool("isWalk", true);
+
             Dir = MoveDir.Left;
         }
         else
@@ -72,7 +74,6 @@ public class TestScript : MonoBehaviour
         {
             if (_ani.GetCurrentAnimatorStateInfo(0).IsName("Youmu_Slash"))
             {
-                Debug.Log("A");
                 _ani.SetTrigger("Pierce");
             }
             else
