@@ -631,7 +631,6 @@ GameObject:
   - component: {fileID: 2005842751}
   - component: {fileID: 2005842756}
   - component: {fileID: 2005842755}
-  - component: {fileID: 2005842757}
   m_Layer: 0
   m_Name: Youmu
   m_TagString: Untagged
@@ -735,7 +734,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5310132e4d6942d4bfe27d949176183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 3
   _isFocusing: 0
   _isJumping: 0
 --- !u!50 &2005842755
@@ -785,15 +783,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.53138167, y: 0.80801255}
   m_EdgeRadius: 0
---- !u!114 &2005842757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2005842750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9ddfcaf334842cf890d9ac4fe99723, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
