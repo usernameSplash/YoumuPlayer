@@ -11,7 +11,6 @@ public class TestScript : MonoBehaviour
     Vector3 _ScaleFlippedX = new Vector3(-3.0f, 3.0f, 3.0f);
 
     float _speed = 3.0f;
-    float _maxSpeed = 7.0f;
     float _jumpPower = 0.0f;
 
     public bool _isFocusing = false; // 정신집중
