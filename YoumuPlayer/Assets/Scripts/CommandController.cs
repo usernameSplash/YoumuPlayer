@@ -52,8 +52,8 @@ public class CommandController : MonoBehaviour
         CommandAdder(new ulong[] { Command.Arrow_Left, Command.Arrow_Left }, LeftDash);
         CommandAdder(new ulong[] { Command.Arrow_Right, Command.Arrow_Right }, RightDash);
         CommandAdder(new ulong[] { Command.Attack_J, Command.Attack_J }, DoubleAttack);
-        CommandAdder(new ulong[] { Command.Arrow_Left, Command.Arrow_Down, Command.Arrow_Right, Command.Attack_J }, LeftDashAttack);
-        CommandAdder(new ulong[] { Command.Arrow_Right, Command.Arrow_Down, Command.Arrow_Left, Command.Attack_J }, RightDashAttack);
+        CommandAdder(new ulong[] { Command.Arrow_Left, Command.Arrow_Down, Command.Arrow_Right, Command.Attack_J }, RightDashAttack);
+        CommandAdder(new ulong[] { Command.Arrow_Right, Command.Arrow_Down, Command.Arrow_Left, Command.Attack_J }, LeftDashAttack);
     }
 
     void Update()
