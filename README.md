@@ -27,7 +27,7 @@ All rights of Image Resources Are Property of **ZUN**, and **Tasogare Frontier**
 -   [ ] Jumping Attack
 -   [ ] Sitting Attack
 -   [x] Dash
--   [ ] Dash Attack
+-   [x] Dash Attack
 
 ## Directory
 
