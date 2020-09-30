@@ -3,21 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-struct Command
-{
-    public readonly static ulong Arrow_Down = 0x1;
-    public readonly static ulong Arrow_Up = 0x100;
-    public readonly static ulong Arrow_Left = 0x10000;
-    public readonly static ulong Arrow_Right = 0x1000000;
-    public readonly static ulong Attack_J = 0x100000000;
-    public readonly static ulong Attack_K = 0x10000000000;
-    public readonly static ulong Attack_U = 0x1000000000000;
-    public readonly static ulong Attack_I = 0x100000000000000;
-    static public Dictionary<string, ulong> CommandKeyList = new Dictionary<string, ulong>();
-}
 
 public class CommandController : MonoBehaviour
 {
+    YoumuController _youmu;
+    Animator _ani;
     ulong _curCommand;
     int _inputCounter; // Times that Command keys entered.
     Dictionary<ulong, Action> _commandList;  // Command and Callback Funcs.
@@ -36,6 +26,9 @@ public class CommandController : MonoBehaviour
 
     void Awake()
     {
+        _youmu = GetComponent<YoumuController>();
+        _ani = GetComponent<Animator>();
+
         _curCommand = 0;
         _inputCounter = 0;
         _commandList = new Dictionary<ulong, Action>();
@@ -67,7 +60,6 @@ public class CommandController : MonoBehaviour
 
                 StartCoroutine(UpdateCommand(pair.Value, _inputCounter));
                 _inputCounter++;
-
             }
         }
 
@@ -92,7 +84,7 @@ public class CommandController : MonoBehaviour
     */
     IEnumerator UpdateCommand(ulong key, int count)
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.2f);
         _inputCounter--;
         _curCommand = _curCommand & (~(key << count));
     }
@@ -101,16 +93,26 @@ public class CommandController : MonoBehaviour
     void LeftDash()
     {
         Debug.Log("LeftDash");
+        _youmu.Dir = YoumuController.LookDir.Left;
+        _youmu._speed = 12.0f;
+        _ani.SetBool("isDash", true);
     }
 
     void RightDash()
     {
         Debug.Log("RightDash");
+        _youmu.Dir = YoumuController.LookDir.Right;
+        _youmu._speed = 12.0f;
+        _ani.SetBool("isDash", true);
     }
 
     void DoubleAttack()
     {
-        Debug.Log("DoubleAttack");
+        if (_ani.GetCurrentAnimatorStateInfo(0).IsName("Youmu_Slash"))
+        {
+            Debug.Log("DoubleAttack");
+            _ani.SetTrigger("Pierce");
+        }
     }
 
     void LeftDashAttack()

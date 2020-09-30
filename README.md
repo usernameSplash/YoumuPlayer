@@ -17,18 +17,16 @@ All rights of Image Resources Are Property of **ZUN**, and **Tasogare Frontier**
 -   [x] Idle
 -   [x] Sit & Stand
 -   [x] Walk
--   [x] Attack
-    -   [x] Slash
-    -   [x] Pierce(combo attack)
+-   [x] Attack(Slash)
 -   [x] Jump
 
 #### Advanced
 
--   [ ] Command Input System -> 격투게임 커맨드 입력 등)
-        구현 시도해보았으나 어려워서 포기, `YoumuInput.cs` 파일 참조. (큐 시스템까지는 구현)
+-   [x] Command Input System -> 격투게임 커맨드 입력 등) : `CommandController.cs`
+-   [x] Combo attack(Pierce)
 -   [ ] Jumping Attack
 -   [ ] Sitting Attack
--   [ ] Dash
+-   [x] Dash
 -   [ ] Dash Attack
 
 ## Directory
