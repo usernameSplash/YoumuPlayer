@@ -45,8 +45,8 @@ public class CommandController : MonoBehaviour
         CommandAdder(new ulong[] { Command.Arrow_Left, Command.Arrow_Left }, LeftDash);
         CommandAdder(new ulong[] { Command.Arrow_Right, Command.Arrow_Right }, RightDash);
         CommandAdder(new ulong[] { Command.Attack_J, Command.Attack_J }, DoubleAttack);
-        CommandAdder(new ulong[] { Command.Arrow_Left, Command.Arrow_Down, Command.Arrow_Right, Command.Attack_J }, RightDashAttack);
-        CommandAdder(new ulong[] { Command.Arrow_Right, Command.Arrow_Down, Command.Arrow_Left, Command.Attack_J }, LeftDashAttack);
+        CommandAdder(new ulong[] { Command.Arrow_Left, Command.Arrow_Right, Command.Attack_J }, RightDashAttack);
+        CommandAdder(new ulong[] { Command.Arrow_Right, Command.Arrow_Left, Command.Attack_J }, LeftDashAttack);
     }
 
     void Update()
@@ -94,7 +94,7 @@ public class CommandController : MonoBehaviour
     {
         Debug.Log("LeftDash");
         _youmu.Dir = YoumuController.LookDir.Left;
-        _youmu._speed = 12.0f;
+        _youmu._speed = 7.0f;
         _ani.SetBool("isDash", true);
     }
 
@@ -102,7 +102,7 @@ public class CommandController : MonoBehaviour
     {
         Debug.Log("RightDash");
         _youmu.Dir = YoumuController.LookDir.Right;
-        _youmu._speed = 12.0f;
+        _youmu._speed = 7.0f;
         _ani.SetBool("isDash", true);
     }
 
@@ -118,9 +118,13 @@ public class CommandController : MonoBehaviour
     void LeftDashAttack()
     {
         Debug.Log("LeftDashAttack");
+        _youmu.Dir = YoumuController.LookDir.Left;
+        _ani.SetTrigger("DashAttack");
     }
     void RightDashAttack()
     {
         Debug.Log("RightDashAttack");
+        _youmu.Dir = YoumuController.LookDir.Right;
+        _ani.SetTrigger("DashAttack");
     }
 }
