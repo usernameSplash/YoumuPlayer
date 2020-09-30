@@ -174,8 +174,11 @@ public class YoumuController : MonoBehaviour
 
     void Jump()
     {
-        if (!_isJumping)
+        if (!_isJumping && _jumpPower > 0.0f)
+        {
+            _ani.SetBool("isJump", true);
             _rigid.AddForce(Vector3.up * _jumpPower, ForceMode2D.Impulse);
+        }
     }
 
     void IsOnAir()
@@ -189,10 +192,15 @@ public class YoumuController : MonoBehaviour
 
         if (rayHit.collider != null)
         {
-            if (rayHit.distance < 1.2f)
+            if (rayHit.distance < 1.0f)
             {
                 _ani.SetBool("isJump", false);
                 _isJumping = false;
+            }
+            else
+            {
+                _ani.SetBool("isJump", true);
+                _isJumping = true;
             }
         }
         else
@@ -213,6 +221,28 @@ public class YoumuController : MonoBehaviour
     public void LeaveFocus()
     {
         _isFocusing = false;
+    }
+
+    //대시 공격에서 실제로 돌진하는 부분
+    void DashAttackExecute()
+    {
+        _rigid.AddForce(DirVec * 24.0f, ForceMode2D.Impulse);
+        StartCoroutine(DashAttackStop());
+    }
+
+    IEnumerator DashAttackStop()
+    {
+        while (true)
+        {
+            if (Mathf.Abs(_rigid.velocity.x) <= 0.1f)
+            {
+                break;
+            }
+            yield return null;
+        }
+        _rigid.velocity = new Vector2(0.0f, _rigid.velocity.y);
+        _ani.SetTrigger("DashAttackStop");
+        yield break;
     }
 
 
